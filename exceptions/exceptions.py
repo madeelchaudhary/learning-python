@@ -39,3 +39,14 @@ try:
     raise ValueError("This is a value error")
 except ValueError as ex:
     print(ex)
+
+# with blocks
+try:
+    # This will close the file automatically, even if an exception is thrown
+    # you can use this with any object that implements the context manager
+    # multiple objects can be used in the same with block by separating them with a comma
+    with open("app.py") as file:
+        print("File opened.")
+except FileNotFoundError:
+    print("File not found.")
+print("After try block.")
