@@ -34,3 +34,7 @@ print(user)
 
 user.clear()
 print(user)
+
+# Identity operators
+# is: returns True if both variables are the same object
+# is not: returns True if both variables are not the same object
