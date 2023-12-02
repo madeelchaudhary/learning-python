@@ -50,3 +50,8 @@ try:
 except FileNotFoundError:
     print("File not found.")
 print("After try block.")
+
+
+# when multiple exceptions are thrown, the first one is caught
+# when multiple except blocks are used, the first one that matches is executed
+# the finally block is always executed
