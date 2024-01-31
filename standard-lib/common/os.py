@@ -52,34 +52,34 @@ os.removedirs('OS-Demo-3/Sub-Dir-1')  # returns None
 
 '''Working with Files'''
 
-# OS create file
-os.writeFile('test.txt', 'Hello World')  # returns None
+# OS open or create file
+fd = os.open('demo.txt', os.O_RDWR | os.O_CREAT)  # returns an integer
 
-# OS rename
-os.rename('test.txt', 'demo.txt')  # returns None
-
-# OS stat
-print(os.stat('demo.txt'))  # returns a stat_result object
-
-# OS stat file size
-print(os.stat('demo.txt').st_size)
-
-# OS stat file modified time
-print(os.stat('demo.txt').st_mtime)  # returns a float
-
-# OS report modified time
-mod_time = os.stat('demo.txt').st_mtime
-
-print(datetime.fromtimestamp(mod_time))  # returns a datetime object
-
-# OS open file
-fd = os.open('demo.txt', os.O_RDWR | os.O_CREAT)
+# OS write to file
+bytes_written = os.write(fd, 'Hello World'.encode())  # returns an integer
 
 # OS close file
 os.close(fd)  # returns None
 
+# OS rename
+os.rename(src='demo.txt', dst='test.txt')  # returns None
+
+# OS stat
+print(os.stat('test.txt'))  # returns a stat_result object
+
+# OS stat file size
+print(os.stat('test.txt').st_size)
+
+# OS stat file modified time
+print(os.stat('test.txt').st_mtime)  # returns a float
+
+# OS report modified time
+mod_time = os.stat('test.txt').st_mtime
+
+print(datetime.fromtimestamp(mod_time))  # returns a datetime object
+
 # OS remove file
-os.remove('demo.txt')  # returns None
+os.remove('test.txt')  # returns None
 
 # OS walk through the directory tree
 for dirpath, dirnames, filenames in os.walk(os.getcwd()):
